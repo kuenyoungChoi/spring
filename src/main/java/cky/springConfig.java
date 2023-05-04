@@ -1,6 +1,5 @@
 package cky;
 
-import cky.domain.Member;
 import cky.repository.MemberRepository;
 import cky.repository.MemoryMemberRepository;
 import cky.repository.MemoryProdRepository;
@@ -10,8 +9,17 @@ import cky.service.ProdService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.sql.DataSource;
+
 @Configuration
 public class springConfig {
+
+    private final DataSource dataSource;
+
+    public springConfig(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
 
     @Bean
     public ProdService prodService() {
@@ -30,6 +38,7 @@ public class springConfig {
 
     @Bean
     public MemberRepository memberRepository() {
-        return new MemoryMemberRepository();
+//        return new MemoryMemberRepository();
+//        return new JdbcMem
     }
 }
